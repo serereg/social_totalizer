@@ -1,0 +1,13 @@
+pytest
+pytest-sugar
+pytest-cov
+requests
+#black
+isort
+#flake8
+pre-commit
+pylama
+mypy
+beautifulsoup4
+aiohttp
+lxml
