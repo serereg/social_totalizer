@@ -16,4 +16,4 @@ jobs:
       - name: Run script
         run: |
           pip install -r requirements.txt
-          pytest --cov=homeworks
+          pytest --cov=totalizer
