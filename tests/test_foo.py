@@ -1,4 +1,4 @@
-from totalizer.main import foo
+from main import foo
 
 
 def test_foo():
