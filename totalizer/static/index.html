@@ -15,7 +15,8 @@
 
 <body>
 	<header>
-		<form method="POST" class="w3-third" id="auth">
+<!--		<form method="POST" class="w3-third" id="auth">-->
+		<form method="POST" class="w3-third" id="auth" style="display: none">
 			<label for="auth_username">Пользователь:</label>
 			<input class="w3-input w3-border w3-round-large"  id="auth_username" type="text" name="username">
 			<br/>
@@ -26,7 +27,8 @@
 		</form>
 	</header>
 
-	<section id="panel" class="w3-row-padding w3-theme" style="display: none">
+<!--	<section id="panel" class="w3-row-padding w3-theme" style="display: none">-->
+	<section id="panel" class="w3-row-padding w3-theme" style="display: block">
 		<div id="app" v-bind:onload="init">
 			<header>
 				<div class="w3-row w3-padding w3-theme-d2 w3-xlarge">
@@ -118,44 +120,6 @@
 					</div>
 				</div>
 
-				<!-- <datalist id="coolers">
-					<option v-for="index in N" v-bind:value="index">
-				</datalist>
-
-				<div class="w3-third w3-section">
-					<div class="w3-card-4 w3-display-container">
-						<img src="static/images/CKT.png" style="width:100%">
-						<div class="w3-display-middle w3-container w3-card-4"
-						v-bind:class="{'w3-light-grey': !cooler_control.is_reg_on,
-										'w3-green': cooler_control.is_reg_on}">
-
-							<label for="unitn">Управление ЦКТ №</label>
-							<input class="w3-input w3-border w3-round-large"
-							type="number" id="unitn" list="coolers" min="1" v-bind:max="N"
-							v-model.number = "curent_cooler_for_editing"
-							v-on:change = "cooler_control = Object.assign({}, coolers[curent_cooler_for_editing-1])"/>
-
-							<label for="write_sp">Задание для поддержания температуры:</label>
-							<input class="w3-input w3-border w3-round-large"
-							type="number"
-							v-model.number.lazy="cooler_control.sp"/>
-
-							<label for="CmdOn CmdOff">Включить/Отключить поддержание температуры:</label>
-							<p/>
-							<button class="w3-button w3-round-large w3-green" onclick="cmd_on()"> Вкл </button>
-							<button class="w3-button w3-round-large w3-red" onclick="cmd_off()">Откл</button>
-							<p/>
-
-							<label for="ckt_description">Изменить описание:</label>
-							<textarea class="form-control w3-border w3-round-large" rows="5"
-							type="text"
-							maxlength="200"
-							v-model.text.lazy = "cooler_control.description"></textarea>
-
-							<button class="w3-button w3-round-large w3-light-grey" onclick = "send_description()">Изменить описание</button>
-						</div>
-					</div>
-				</div> -->
 			</div>
 		</div>
 	</section>
