@@ -7,4 +7,4 @@ from aiohttp import web
 class IndexView(web.View):
     @staticmethod
     async def get():
-        return web.FileResponse("static/index.html")
+        return web.FileResponse("totalizer/static/index.html")

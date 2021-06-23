@@ -2,7 +2,7 @@ from aiohttp import web
 import asyncio
 import logging
 
-from web.routes import ROUTES
+from .web.routes import ROUTES
 
 # from config import CONFIG
 
@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     for path, method, view in ROUTES:
         app.router.add_route(method, path, view)
-    app.router.add_static("/", "static")
+    app.router.add_static("/", "totalizer/static")
 
     web.run_app(app, port=80)
 
