@@ -1,6 +1,7 @@
 from aiohttp import web
-import asyncio
-import logging
+
+# import asyncio
+# import logging
 
 from .web.routes import ROUTES
 
@@ -15,11 +16,11 @@ def db_connect(dsn, db):
     # return client
 
 
-if __name__ == "__main__":
-    logger = logging.getLogger(__name__)
+def main():
+    # logger = logging.getLogger(__name__)
     app = web.Application()
 
-    loop = asyncio.get_event_loop()
+    # loop = asyncio.get_event_loop()
     # db_client = db_connect("sqlite:///db/db.sqlite3", Base)
     # app["database"] = db_client
 
@@ -28,6 +29,10 @@ if __name__ == "__main__":
     app.router.add_static("/", "totalizer/static")
 
     web.run_app(app, port=80)
+
+
+if __name__ == "__main__":
+    main()
 
 
 def foo():
