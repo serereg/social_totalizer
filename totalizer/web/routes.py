@@ -1,4 +1,7 @@
-from totalizer.web.views import IndexView
+from totalizer.web.views import IndexView, WallView
 
 
-ROUTES = (("/", "*", IndexView),)
+ROUTES = (
+    ("/", "*", IndexView),
+    ("/wall", "*", WallView),
+)

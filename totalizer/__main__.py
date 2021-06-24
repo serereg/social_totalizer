@@ -5,15 +5,20 @@ from aiohttp import web
 
 from .web.routes import ROUTES
 
-# from config import CONFIG
+from .config import CONFIG
+from .fetcher.vk import Vk
 
 
 def main():
     # logger = logging.getLogger(__name__)
 
     # Todo: get several tokens, or generate its.
+    print(CONFIG)
+    vk = Vk(token=CONFIG["vk"]["token"])
 
     app = web.Application()
+
+    app["vk"]: Vk = vk
 
     # loop = asyncio.get_event_loop()
 

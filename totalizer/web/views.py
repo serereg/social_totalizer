@@ -1,5 +1,6 @@
 # import asyncio
 # import logging
+# import time
 
 from aiohttp import web
 
@@ -13,12 +14,13 @@ class IndexView(web.View):
 class HTTPView(web.View):
     async def get(self):
         print("httpview get")
-        pass
+        print(self.request.rel_url.query)
 
-    async def post(self):
-        return web.json_response(
-            await self.handle(
-                await self.request.text(),
-                self.request.headers,
-            )
-        )
+
+class WallView(HTTPView):
+    async def get(self):
+        print("httpview get")
+        print(self.request.rel_url.query)
+        wall_id = self.request.rel_url.query["wall_id"]
+        vk = self.request.app["vk"]
+        return web.Response(text=f"{wall_id=}, {vk.token=}")
