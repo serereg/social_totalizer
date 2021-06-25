@@ -1,139 +1,49 @@
-﻿<!DOCTYPE html>
-
+﻿<!DOCTYPE HTML>
 <html>
+ <head>
+  <meta charset="utf-8">
+  <title>Тег FORM, атрибут method</title>
+ </head>
+ <body>
+ <form action="/wall">
+    <label for="GET-wall_id">Name:</label>
+    <input id="GET-wall_id" type="number" name="wall_id"><br>
 
-<head>
-	<meta charset = "UTF-8"/>
-	<title>Social Totaliser</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Cache-Control" content="no-cache" charset="utf-8">
-	<link href="style.css" rel="stylesheet" type=""/>
+    <label for="post_id"> post id </label>
+    <input id="post_id" type="checkbox" name="post_id"><br>
 
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <label for="text"> text </label>
+    <input id="text" type="checkbox" name="text"><br>
 
-</head>
+    <label for="reposts"> reposts </label>
+    <input id="reposts" type="checkbox" name="reposts"><br>
 
-<body>
-	<header>
-<!--		<form method="POST" class="w3-third" id="auth">-->
-		<form method="POST" class="w3-third" id="auth" style="display: none">
-			<label for="auth_username">Пользователь:</label>
-			<input class="w3-input w3-border w3-round-large"  id="auth_username" type="text" name="username">
-			<br/>
-			<label for="auth_password">Пароль:</label>
-			<input class="w3-input w3-border w3-round-large"  id="auth_password" type="password" name="password">
-			<br/>
-			<input type="submit" class="w3-button w3-round-large w3-light-grey" value="Войти" onclick="event.preventDefault(); auth()">
-		</form>
-	</header>
+    <label for="likes"> like </label>
+    <input id="likes" type="checkbox" name="likes"><br>
 
-<!--	<section id="panel" class="w3-row-padding w3-theme" style="display: none">-->
-	<section id="panel" class="w3-row-padding w3-theme" style="display: block">
-		<div id="app" v-bind:onload="init">
-			<header>
-				<div class="w3-row w3-padding w3-theme-d2 w3-xlarge">
-					<div class="w3-quarter">
-						<div class="w3-bar">
-							<a href="#" class="w3-bar-item w3-button"><i class="fa fa-bars"></i></a>
-						</div>
-					</div>
-				</div>
+    <label for="comments"> comments </label>
+    <input id="comments" type="checkbox" name="comments"><br>
 
-				<div class="w3-container w3-padding-32 w3-theme-d1">
-					<h1>Емкости ЦКТ</h1>
-					<!-- Состояние соединения -->
-					<input id="status" class="w3-input w3-border w3-round-large"
-					v-bind:value="connection_watchdog">
+    <input type="submit" value="Get">
+  </form>
 
-					<input id="busyTank" name="busyTank"
-					v-on:change="show_only_at_work()"
-					class="w3-check"
-					type="checkbox"
-					v-model="show_only_coolers_at_work">
-					<label for="busyTank">Отобразить ЦКТ, находящиеся в работе</label>
+ <form action="/average">
+     <label for="GET-wall_id_average">Name:</label>
+     <input id="GET-wall_id_average" type="number" name="wall_id"><br>
 
+     <label for="years"> years </label>
+     <input id="years" type="radio" name="years"><br>
 
-				</div>
-			</header>
-			<div class="w3-row-padding w3-theme">
+     <label for="months"> post id </label>
+     <input id="months" type="radio" name="months"><br>
 
-				<div v-for="cooler in coolers" class="w3-third w3-section" v-show="(show_only_coolers_at_work && cooler.is_reg_on) || !show_only_coolers_at_work">
-					<div class="w3-card-4 w3-display-container">
-						<img src="images/CKT.png" style="width:100%">
-						<div class="w3-padding w3-display-topleft">
-							{{cooler.id}}
-						</div>
-						<div class="w3-display-middle w3-container w3-container w3-card-4"  style="width:65%"
-						v-bind:class="{'w3-light-grey': !cooler.is_reg_on, 'w3-green': cooler.is_reg_on}">
-							<label>Текущая, °С</label>
-							<input readOnly="readOnly" type="number"
-							class="w3-input w3-border w3-round-large"
-							v-bind:class="{'w3-red': cooler.is_reg_alarm && !cooler.is_pv_fault, 'w3-black': cooler.is_pv_fault,'': !cooler.is_pv_fault}"
-							v-bind:value="cooler.pv.toFixed(1)"
-							style="font-size: 250%">
+     <label for=""> post id </label>
+     <input id="" type="radio" name=""><br>
 
-							<p/>
-							<textarea readOnly="readOnly" class="form-control w3-border w3-round-large" rows="5" type="text" style="width:100%"
-							v-bind:value="cooler.description" maxlength="200"></textarea>
-							<!-- эксперимент с модальным окном -->
-							<button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-black"
-							v-on:click="curent_cooler_for_editing = cooler.id; cooler_control = Object.assign({}, cooler)">Управление</button>
-						</div>
+     <label for="text"> text </label>
+     <input id="text" type="radio" name="text"><br>
 
-						<div id="id01" class="w3-modal">
-							<div class="w3-modal-content w3-card-4">
-							<header class="w3-container w3-black">
-								<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-								<h2>ЦКТ №{{cooler_control.id}}</h2>
-							</header>
-							<div class="w3-container">
-								<img src="images/CKT.png" style="width:100%">
-
-
-									<label for="write_sp">Задание для поддержания температуры:</label>
-									<input class="w3-input w3-border w3-round-large"
-									type="number"
-									v-model.number.lazy="cooler_control.sp"/>
-
-									<label for="CmdOn CmdOff">Включить/Отключить поддержание температуры:</label>
-									<p/>
-									<button class="w3-button w3-block w3-green" style="width:100%" onclick="cmd_on()"> Вкл </button>
-									<button class="w3-button w3-block w3-gray" style="width:100%" onclick="cmd_off()">Откл</button>
-									<p/>
-
-									<label for="ckt_description">Изменить описание:</label>
-									<p></p>
-									<textarea class="form-control w3-border w3-round-large w3-middle" rows="5"
-									type="text"
-									maxlength="200"
-									v-model.text.lazy = "cooler_control.description"></textarea>
-
-									<button class="w3-button w3-block w3-gray" style="width:100%" onclick = "send_description()">Изменить описание</button>
-
-							</div>
-							<footer class="w3-container w3-black">
-								<p></p>
-							</footer>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</section>
-
-
-	<footer class="w3-container w3-theme-d4">
-		<p class="w3-large">...</p>
-	</footer>
-
-
-	<script src="scripts/main.js"></script>
-	<script src="scripts/utils.js"></script>
-	<script src="scripts/main_vue.js"></script>
-
+     <input type="submit" value="Get">
+ </form>
 </body>
-
 </html>

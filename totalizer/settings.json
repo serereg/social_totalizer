@@ -1,5 +1,8 @@
 {
     "vk": {
         "token": "test_token"
+    },
+    "server": {
+        "port": 8080
     }
 }

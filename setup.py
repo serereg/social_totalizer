@@ -7,4 +7,5 @@ setup(
     author="serereg",
     author_email="s@s.com",
     packages=find_packages(),
+    install_requires=["aiohttp"],
 )

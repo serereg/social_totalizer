@@ -26,7 +26,7 @@ def main():
         app.router.add_route(method, path, view)
     app.router.add_static("/", "totalizer/static")
 
-    web.run_app(app, port=80)
+    web.run_app(app, port=CONFIG["server"]["port"])
 
 
 if __name__ == "__main__":

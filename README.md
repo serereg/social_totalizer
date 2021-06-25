@@ -36,8 +36,7 @@ For manual deploying on Linux (Ubuntu) machine and run locally:
 1. Install python3.9 ```apt-get install python3.9```
 1. Install virtualenv ```pip3 install virtualenv```
 1. Create virtual environment ```virtualenv venv```
-1. If you need administrative privileges, get it ```sudo -s```
 1. Activate vevn ```source venv/bin/activate```
-1. Install dependencies ```pip3 install -r requirements.txt```
+1. Install dependencies ```pip3 install -e ./```
 1. Run webserver ```python3.9 -m totalizer```
 1. Check working via browser ```http://localhost/```
