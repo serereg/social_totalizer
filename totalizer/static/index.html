@@ -5,45 +5,58 @@
   <title>Тег FORM, атрибут method</title>
  </head>
  <body>
- <form action="/wall">
-    <label for="GET-wall_id">Name:</label>
-    <input id="GET-wall_id" type="number" name="wall_id"><br>
+<div>
+    1.
+    <form action="/wall">
+        <label for="login_id">Login</label>
+        <input id="login_id" name="login" type="email"><br>
 
-    <label for="post_id"> post id </label>
-    <input id="post_id" type="checkbox" name="post_id"><br>
+        <label for="password_id">Password</label>
+        <input id="password_id" name="password" type="text"><br>
 
-    <label for="text"> text </label>
-    <input id="text" type="checkbox" name="text"><br>
+        <label for="wall_id">Owner id (for group type "-" before id)</label>
+        <input id="wall_id" name="wall_id" type="number" value=-205427305><br>
+        <br>
+        Export options:
+        <div>
+            <label for="post_id"> post id </label>
+            <input id="post_id" name="post_id" type="checkbox" checked><br>
 
-    <label for="reposts"> reposts </label>
-    <input id="reposts" type="checkbox" name="reposts"><br>
+            <label for="part1_text"> text </label>
+            <input id="part1_text" name="text" type="checkbox" checked><br>
 
-    <label for="likes"> like </label>
-    <input id="likes" type="checkbox" name="likes"><br>
+            <label for="reposts"> reposts </label>
+            <input id="reposts" name="reposts" type="checkbox" checked><br>
 
-    <label for="comments"> comments </label>
-    <input id="comments" type="checkbox" name="comments"><br>
+            <label for="likes"> like </label>
+            <input id="likes" name="likes" type="checkbox" checked><br>
 
-    <input type="submit" value="Get">
-  </form>
+            <label for="comments"> comments </label>
+            <input id="comments" name="comments" type="checkbox" checked><br>
+        </div>
 
- <form action="/average">
-     <label for="GET-wall_id_average">Name:</label>
-     <input id="GET-wall_id_average" type="number" name="wall_id"><br>
+        <input type="submit" value="Get">
+    </form>
 
-     <label for="years"> years </label>
-     <input id="years" type="radio" name="years"><br>
+</div>
+<div>
+    2.
+    <form action="/average">
+        <label for="GET-wall_id_average">Owner id (for group type "-" before id)</label>
+        <input id="GET-wall_id_average" type="number" name="wall_id"><br>
+        Export options:
+        <div>
+            <div>
+                <label for="years"> years </label>
+                <input id="years" type="radio" name="years"><br>
 
-     <label for="months"> post id </label>
-     <input id="months" type="radio" name="months"><br>
+                <label for="months"> post id </label>
+                <input id="months" type="radio" name="months"><br>
 
-     <label for=""> post id </label>
-     <input id="" type="radio" name=""><br>
+            </div>
 
-     <label for="text"> text </label>
-     <input id="text" type="radio" name="text"><br>
-
-     <input type="submit" value="Get">
- </form>
+            <input type="submit" value="Get">
+    </form>
+</div>
 </body>
 </html>
