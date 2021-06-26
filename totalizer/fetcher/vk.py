@@ -22,9 +22,9 @@ class Wall:
             return
 
         tools = vk_api.VkTools(vk_session)
-        self.posts = tools.get_all_slow(
+        self.posts = tools.get_all(
             method="wall.get",
-            max_count=1,
+            max_count=50,
             values={"owner_id": self.owner_id},
             stop_fn=stop_filter,
         )
@@ -32,7 +32,8 @@ class Wall:
     def get_posts_info(self):
         rows = []
         for post in self.posts["items"]:
-            id_, text, likes, req_count, attach_count, com_count, li_attachs = (
+            date, id_, text, likes, req_count, attach_count, com_count, li_attachs = (
+                post["date"],
                 post["id"],
                 post["text"],
                 post["likes"]["count"],
@@ -42,6 +43,7 @@ class Wall:
                 post.get("attachments", []),
             )
             row = {
+                "date": datetime.fromtimestamp(date).isoformat(),
                 "id": id_,
                 "text": text,
                 "likes": likes,

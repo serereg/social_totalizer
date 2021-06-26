@@ -1,17 +1,17 @@
 # import asyncio
-# import logging
 # import time
 
 import csv
 import json
+import logging
 
 from aiohttp import web
 
-# from datetime import datetime
+from datetime import datetime
 from pathlib import Path
 from typing import Dict, List
 
-from ..fetcher.vk import Wall
+from ..fetcher.vk import Wall, time_filter
 
 
 class IndexView(web.View):
@@ -37,20 +37,33 @@ class WallView(HTTPView):
         login = self.request.rel_url.query["login"]
         password = self.request.rel_url.query["password"]
 
+        dt_stopping_search_str = self.request.rel_url.query["date_time"]
+        dt_stopping_search = datetime.strptime(dt_stopping_search_str, "%d-%m-%Y")
+        logging.warning(dt_stopping_search)
+
         vk = self.request.app["vk"]
         # time_to_stop = datetime(2021, 6, 25)
 
         wall = Wall(owner_id=int(wall_id))
         vk.add_wall(wall)
 
-        wall.update(login, password, stop_filter=None)
-        print("updated")
+        wall.update(login, password, stop_filter=time_filter(dt_stopping_search))
+        logging.warning("Wall updated")
+
         posts_info = wall.get_posts_info()
         # Todo: use web.StreamResponse for transferring
 
         temp_file_to_transfer = Path(__file__).parent / "tmp.csv"
 
-        columns = ["id", "likes", "req_count", "attach_count", "com_count", "attach"]
+        columns = [
+            "date",
+            "id",
+            "likes",
+            "req_count",
+            "attach_count",
+            "com_count",
+            "attach",
+        ]
         form_csv(temp_file_to_transfer, columns, posts_info)
 
         # Todo: need to clear folder
