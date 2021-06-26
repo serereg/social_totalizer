@@ -1,8 +1,8 @@
-from totalizer.web.views import IndexView, WallView
+from totalizer.web.views import AnalysisView, IndexView, WallView
 
 
 ROUTES = (
     ("/", "*", IndexView),
     ("/wall", "*", WallView),
-    ("/average", "*", WallView),
+    ("/analysis", "*", AnalysisView),
 )

@@ -70,6 +70,11 @@ class WallView(HTTPView):
         return web.FileResponse(temp_file_to_transfer)
 
 
+class AnalysisView(HTTPView):
+    async def get(self):
+        return web.FileResponse("totalizer/static/data/VK_Analysis" ".ipynb")
+
+
 def form_csv(file: Path, columns: List[str], rows: List[Dict]):
     with open(file, "w", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=columns)
