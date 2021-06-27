@@ -7,6 +7,7 @@ from aiohttp import web
 from ..fetcher.vk import Wall, time_filter
 from .utils import form_csv
 
+
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -16,17 +17,16 @@ class IndexView(web.View):
         return web.FileResponse("totalizer/static/index.html")
 
 
-class HTTPView(web.View):
-    async def get(self):
-        logging.debug("httpview get")
-        logging.debug(self.request.rel_url.query)
-
-    # async def post(self):
-    #     logging.debug(self.request)
-
-
 class WallView(web.View):
+    """A class for extracting and sending information from a VK wall."""
+
     async def get(self):
+        """Send .csv file with info from the wall.
+
+        From given information (wall id, login, password and time for
+            stopping extracting posts from the wall) form csv file.
+            Now there is a nowing issue with working just with one file
+            tmp.csv."""
         logging.debug("wallview get")
         logging.debug(self.request.rel_url.query)
 
@@ -72,6 +72,8 @@ class WallView(web.View):
 
 
 class AnalysisView(web.View):
+    """A class for sending statistic info."""
+
     async def get(self):
         logging.debug("analysisview get")
         logging.debug(self.request.rel_url.query)
