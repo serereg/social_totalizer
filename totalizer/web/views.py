@@ -33,17 +33,18 @@ class WallView(web.View):
         wall_id = self.request.rel_url.query["wall_id"]
         login = self.request.rel_url.query["login"]
         password = self.request.rel_url.query["password"]
+        # try:
         dt_stopping_search = datetime.strptime(
             self.request.rel_url.query["date_time"], "%d-%m-%Y"
         )
+        # except ValueError:
+        #     dt_stopping_search = datetime.now()
 
         # vk = self.request.app["vk"]
-        logging.debug("Attempt to authorize in VK")
         wall = Wall(owner_id=int(wall_id))
-        logging.debug("Authorization is done")
         # vk.add_wall(wall)
 
-        logging.debug("Attempt to fetch posts")
+        logging.debug("Attempt to authorize in VK and fetch posts")
         wall.update(login, password, stop_filter=time_filter(dt_stopping_search))
         logging.debug("Posts fetched")
 

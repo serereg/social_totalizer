@@ -8,8 +8,11 @@ from pathlib import Path
 def test_getting_posts_excluding_date():
     wall = Wall(0)
     path = Path(__file__).parent / "data/club205427305.json"
+
+    # monkeypatch
     wall_infos = json.loads(path.read_text())
     wall._posts = wall_infos["response"]
+
     posts = wall.get_posts_info()
     logging.warning("Parsed posts are: \n{}".format("\n ".join(map(str, posts))))
     assert len(posts) == 7
