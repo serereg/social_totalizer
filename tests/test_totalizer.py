@@ -11,8 +11,10 @@ def test_getting_posts():
     wall_infos = json.loads(path.read_text())
     wall._posts = wall_infos["response"]
     posts = wall.get_posts_info()
-    logging.warning("Parsed posts are: \n{}".format("\n ".join(map(str, posts))))
-    assert posts == [
+    # logging.warning("Parsed posts are:
+    # \n{}".format("\n ".join(map(str, posts))))
+
+    real_posts = [
         {
             "date": "2021-06-25T17:36:23",
             "id": 10,
@@ -84,3 +86,6 @@ def test_getting_posts():
             "attach": {},
         },
     ]
+    for post in posts:
+        logging.debug(post)
+        assert post in real_posts
