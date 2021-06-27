@@ -41,9 +41,10 @@ class Wall:
         tools = vk_api.VkTools(vk_session)
         # Todo: use get_all, but then could be
         #  troubles with stop function
+        #  max_count should be calculated
         self._posts = tools.get_all_slow(
             method="wall.get",
-            max_count=50,  # this number should be calculated
+            max_count=50,
             values={"owner_id": self.owner_id},
             stop_fn=stop_filter,
         )
