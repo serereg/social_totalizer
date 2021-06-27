@@ -37,28 +37,18 @@
             <label for="comments"> comments </label>
             <input id="comments" name="comments" type="checkbox" checked><br>
         </div>
-
-        <input type="submit" value="Get">
+        <label for="get_csv"> get dataframe (add extension .csv)</label>
+        <input id="get_csv" type="submit" value="Get">
     </form>
 
 </div>
 <div>
     2.
     <form action="/analysis">
-        <label for="GET-wall_id_average">Owner id (for group type "-" before id)</label>
-        <input id="GET-wall_id_average" type="number" name="wall_id"><br>
-        Export options:
-        <div>
-            <div>
-                <label for="years"> years </label>
-                <input id="years" type="radio" name="years"><br>
-
-                <label for="months"> post id </label>
-                <input id="months" type="radio" name="months"><br>
-
-            </div>
-
-            <input type="submit" value="Get">
+        You can get jupyter script (add extension .ipynb) and run it on Jupyter notebook.
+        Script contains analytical methods for analysing VK dataframes.
+        <label for="get_jupyter"> get a jupyter script as a csv file</label>
+        <input id="get_jupyter" type="submit" value="Get">
     </form>
 </div>
 </body>

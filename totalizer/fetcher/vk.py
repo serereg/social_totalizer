@@ -1,9 +1,12 @@
 # Todo: import libraries for working in vk like
 #  async aiovk, Vkwave, Vkbottle
+import logging
 from datetime import datetime
 from typing import List
 
 import vk_api
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 class Wall:
@@ -18,7 +21,7 @@ class Wall:
         try:
             vk_session.auth(token_only=True)
         except vk_api.AuthError as error_msg:
-            print(error_msg)
+            logging.error(error_msg)
             return
 
         tools = vk_api.VkTools(vk_session)
@@ -64,7 +67,6 @@ class Wall:
                 }
                 attach_props.update(prop)
             row.update({"attach": attach_props})
-            # print(row)
             rows.append(row)
         return rows
 

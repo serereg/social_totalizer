@@ -1,17 +1,13 @@
-# import asyncio
-# import time
-
-import csv
-import json
 import logging
+from datetime import datetime
+from pathlib import Path
 
 from aiohttp import web
 
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List
-
 from ..fetcher.vk import Wall, time_filter
+from .utils import form_csv
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 class IndexView(web.View):
@@ -22,38 +18,41 @@ class IndexView(web.View):
 
 class HTTPView(web.View):
     async def get(self):
-        print("httpview get")
-        print(self.request.rel_url.query)
+        logging.debug("httpview get")
+        logging.debug(self.request.rel_url.query)
 
-    async def post(self):
-        print(self.request)
+    # async def post(self):
+    #     logging.debug(self.request)
 
 
-class WallView(HTTPView):
+class WallView(web.View):
     async def get(self):
-        print("httpview get")
-        print(self.request.rel_url.query)
+        logging.debug("wallview get")
+        logging.debug(self.request.rel_url.query)
+
         wall_id = self.request.rel_url.query["wall_id"]
         login = self.request.rel_url.query["login"]
         password = self.request.rel_url.query["password"]
+        dt_stopping_search = datetime.strptime(
+            self.request.rel_url.query["date_time"], "%d-%m-%Y"
+        )
 
-        dt_stopping_search_str = self.request.rel_url.query["date_time"]
-        dt_stopping_search = datetime.strptime(dt_stopping_search_str, "%d-%m-%Y")
-        logging.warning(dt_stopping_search)
-
-        vk = self.request.app["vk"]
-        # time_to_stop = datetime(2021, 6, 25)
-
+        # vk = self.request.app["vk"]
+        logging.debug("Attempt to authorize in VK")
         wall = Wall(owner_id=int(wall_id))
-        vk.add_wall(wall)
+        logging.debug("Authorization is done")
+        # vk.add_wall(wall)
 
+        logging.debug("Attempt to fetch posts")
         wall.update(login, password, stop_filter=time_filter(dt_stopping_search))
-        logging.warning("Wall updated")
+        logging.debug("Posts fetched")
 
+        logging.debug("Extraction information from posts")
         posts_info = wall.get_posts_info()
         # Todo: use web.StreamResponse for transferring
 
-        temp_file_to_transfer = Path(__file__).parent / "tmp.csv"
+        # Todo: Generate temporary file
+        temp_file_to_transfer = Path(__file__).parent / "data/tmp.csv"
 
         columns = [
             "date",
@@ -64,20 +63,18 @@ class WallView(HTTPView):
             "com_count",
             "attach",
         ]
+        logging.debug("Forming a csv file")
         form_csv(temp_file_to_transfer, columns, posts_info)
 
-        # Todo: need to clear folder
+        # Todo: need to delete the unused file
+        logging.debug("Sending the csv file")
         return web.FileResponse(temp_file_to_transfer)
 
 
-class AnalysisView(HTTPView):
+class AnalysisView(web.View):
     async def get(self):
-        return web.FileResponse("totalizer/static/data/VK_Analysis" ".ipynb")
+        logging.debug("analysisview get")
+        logging.debug(self.request.rel_url.query)
 
-
-def form_csv(file: Path, columns: List[str], rows: List[Dict]):
-    with open(file, "w", newline="") as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=columns)
-        writer.writeheader()
-        for row in rows:
-            writer.writerow({k: json.dumps(v) for k, v in row.items() if k in columns})
+        logging.debug("Sending the jupyter file")
+        return web.FileResponse("totalizer/static/data/VK_Analysis.ipynb")

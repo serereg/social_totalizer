@@ -1,26 +1,24 @@
+import logging
+
 from aiohttp import web
 
-# import asyncio
-# import logging
+from .config import CONFIG
 
+# from .fetcher.vk import Vk
 from .web.routes import ROUTES
 
-from .config import CONFIG
-from .fetcher.vk import Vk
+logging.basicConfig(level=logging.DEBUG)
 
 
 def main():
-    # logger = logging.getLogger(__name__)
+    logging.debug(f"{CONFIG=}")
 
     # Todo: get several tokens, or generate its.
-    print(CONFIG)
-    vk = Vk(token=CONFIG["vk"]["token"])
+    # vk = Vk(token=CONFIG["vk"]["token"])
 
     app = web.Application()
 
-    app["vk"]: Vk = vk
-
-    # loop = asyncio.get_event_loop()
+    # app["vk"]: Vk = vk
 
     for path, method, view in ROUTES:
         app.router.add_route(method, path, view)
@@ -31,8 +29,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-def foo():
-    """Return True."""
-    return True
