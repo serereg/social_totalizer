@@ -11,3 +11,4 @@ mypy
 beautifulsoup4
 aiohttp
 lxml
+vk_api
