@@ -33,12 +33,12 @@ class WallView(web.View):
         wall_id = self.request.rel_url.query["wall_id"]
         login = self.request.rel_url.query["login"]
         password = self.request.rel_url.query["password"]
-        # try:
-        dt_stopping_search = datetime.strptime(
-            self.request.rel_url.query["date_time"], "%d-%m-%Y"
-        )
-        # except ValueError:
-        #     dt_stopping_search = datetime.now()
+        try:
+            dt_stopping_search = datetime.strptime(
+                self.request.rel_url.query["date_time"], "%d-%m-%Y"
+            )
+        except ValueError:
+            dt_stopping_search = datetime.now()
 
         # vk = self.request.app["vk"]
         wall = Wall(owner_id=int(wall_id))
@@ -60,7 +60,7 @@ class WallView(web.View):
             "id",
             "likes",
             "req_count",
-            "attach_count",
+            "attachs_count",
             "com_count",
             "attach",
         ]

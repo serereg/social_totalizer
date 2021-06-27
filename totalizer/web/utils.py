@@ -15,7 +15,7 @@ def form_csv(file: Path, columns: List[str], rows: List[Dict]):
             [{"col1": time1, "col2": value1},
             {"col1" time2, "col2": value2}, ...]
     """
-    with open(file, "w", newline="") as csvfile:
+    with file.open(mode="w", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=columns)
         writer.writeheader()
         for row in rows:

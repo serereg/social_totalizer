@@ -98,17 +98,26 @@ class Wall:
                 "com_count": comments_count,
             }
 
-            types = {"link": ["url"], "audio": ["url"], "photo": ["id", "owner_id"]}
-            attach_props = {}
+            # Todo: read types dinamically
+            types_of_attaches = {
+                "link": ["url"],
+                "audio": ["url"],
+                "photo": ["id", "owner_id"],
+                "video": ["id", "owner_id"],
+                "doc": ["id", "owner_id"],
+            }
+            attach_props = []
             for attach in li_attachs:
-                prop = {
+                converted_attach = {
                     type_: {
-                        sub_prop: attach[type_][sub_prop] for sub_prop in types[type_]
+                        sub_prop: attach[type_][sub_prop]
+                        for sub_prop in types_of_attaches[type_]
                     }
-                    for type_ in types
+                    for type_ in types_of_attaches
                     if type_ in attach
                 }
-                attach_props.update(prop)
+                attach_props.append(converted_attach)
+
             row.update({"attach": attach_props})
             rows.append(row)
         return rows
