@@ -66,7 +66,16 @@ class Wall:
 
         rows = []
         for post in self._posts["items"]:
-            date, id_, text, likes, req_count, attach_count, com_count, li_attachs = (
+            (
+                date,
+                id_,
+                text,
+                likes,
+                reposts_count,
+                comments_count,
+                attach_count,
+                li_attachs,
+            ) = (
                 post["date"],
                 post["id"],
                 post["text"],
@@ -81,9 +90,9 @@ class Wall:
                 "id": id_,
                 "text": text,
                 "likes": likes,
-                "req_count": req_count,
+                "req_count": reposts_count,
                 "attachs_count": attach_count,
-                "com_count": com_count,
+                "com_count": comments_count,
             }
 
             types = {"link": ["url"], "audio": ["url"], "photo": ["id", "owner_id"]}

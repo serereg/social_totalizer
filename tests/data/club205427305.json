@@ -1,0 +1,397 @@
+{
+"response": {
+"count": 7,
+"items": [{
+"id": 10,
+"from_id": 106017,
+"owner_id": -205427305,
+"date": 1624631783,
+"marked_as_ads": 0,
+"post_type": "post",
+"text": "tt.ru",
+"can_delete": 1,
+"attachments": [{
+"type": "photo",
+"photo": {
+"album_id": 47763964,
+"date": 1550320726,
+"id": 456239316,
+"owner_id": 106017,
+"has_tags": false,
+"access_key": "06f0cc7777effd303a",
+"sizes": [{
+"height": 130,
+"url": "https://sun9-5.us...GEvo&type=album",
+"type": "m",
+"width": 73
+}, {
+"height": 231,
+"url": "https://sun9-5.us...lCkY&type=album",
+"type": "o",
+"width": 130
+}, {
+"height": 355,
+"url": "https://sun9-5.us...42GQ&type=album",
+"type": "p",
+"width": 200
+}, {
+"height": 569,
+"url": "https://sun9-5.us...2Nlg&type=album",
+"type": "q",
+"width": 320
+}, {
+"height": 900,
+"url": "https://sun9-5.us...Kynk&type=album",
+"type": "r",
+"width": 510
+}, {
+"height": 75,
+"url": "https://sun9-5.us...ykFM&type=album",
+"type": "s",
+"width": 42
+}, {
+"height": 2160,
+"url": "https://sun9-5.us...CPMY&type=album",
+"type": "w",
+"width": 1215
+}, {
+"height": 604,
+"url": "https://sun9-5.us...FyvU&type=album",
+"type": "x",
+"width": 340
+}, {
+"height": 807,
+"url": "https://sun9-5.us...lZeo&type=album",
+"type": "y",
+"width": 454
+}, {
+"height": 1080,
+"url": "https://sun9-5.us...k41s&type=album",
+"type": "z",
+"width": 607
+}],
+"text": ""
+}
+}],
+"post_source": {
+"type": "vk"
+},
+"comments": {
+"count": 0,
+"can_post": 1,
+"can_view": 1,
+"groups_can_post": true
+},
+"likes": {
+"count": 0,
+"user_likes": 0,
+"can_like": 1,
+"can_publish": 0
+},
+"reposts": {
+"count": 0,
+"wall_count": 0,
+"mail_count": 0,
+"user_reposted": 0
+},
+"is_favorite": false,
+"donut": {
+"is_donut": false
+},
+"short_text_rate": 0.8,
+"edited": 1624692574
+}, {
+"id": 9,
+"from_id": 106017,
+"owner_id": -205427305,
+"date": 1624629454,
+"marked_as_ads": 0,
+"post_type": "post",
+"text": "6 https://www.booking.com/",
+"can_delete": 1,
+"attachments": [{
+"type": "link",
+"link": {
+"url": "http://www.booking.com/",
+"title": "Booking.com: The largest selection of hotels, homes, and vacation rentals",
+"caption": "www.booking.com",
+"description": "Whether you’re looking for hotels, homes, or vacation rentals, you’ll always find the guaranteed best price. Browse our 2,563,380 accommodations in over 85,000 destinations.",
+"photo": {
+"album_id": -25,
+"date": 1624629454,
+"id": 457330680,
+"owner_id": 2000047901,
+"has_tags": false,
+"sizes": [{
+"height": 480,
+"url": "https://sun9-39.u...qa6I&type=share",
+"type": "k",
+"width": 1074
+}, {
+"height": 240,
+"url": "https://sun9-39.u...nwcY&type=share",
+"type": "l",
+"width": 537
+}, {
+"height": 70,
+"url": "https://sun9-39.u...Bf88&type=share",
+"type": "m",
+"width": 130
+}, {
+"height": 140,
+"url": "https://sun9-39.u...xIzI&type=share",
+"type": "p",
+"width": 260
+}, {
+"height": 39,
+"url": "https://sun9-39.u...C8ZE&type=share",
+"type": "s",
+"width": 75
+}, {
+"height": 80,
+"url": "https://sun9-39.u...I6Eo&type=share",
+"type": "x",
+"width": 150
+}],
+"text": "",
+"user_id": 100
+},
+"is_favorite": false
+}
+}],
+"post_source": {
+"type": "vk"
+},
+"comments": {
+"count": 0,
+"can_post": 1,
+"can_view": 1,
+"groups_can_post": true
+},
+"likes": {
+"count": 0,
+"user_likes": 0,
+"can_like": 1,
+"can_publish": 0
+},
+"reposts": {
+"count": 0,
+"wall_count": 0,
+"mail_count": 0,
+"user_reposted": 0
+},
+"is_favorite": false,
+"donut": {
+"is_donut": false
+},
+"short_text_rate": 0.8
+}, {
+"id": 5,
+"from_id": 106017,
+"owner_id": -205427305,
+"date": 1624542225,
+"marked_as_ads": 0,
+"post_type": "post",
+"text": "5",
+"can_delete": 1,
+"post_source": {
+"type": "vk"
+},
+"comments": {
+"count": 0,
+"can_post": 1,
+"can_view": 1,
+"groups_can_post": true
+},
+"likes": {
+"count": 2,
+"user_likes": 1,
+"can_like": 0,
+"can_publish": 0
+},
+"reposts": {
+"count": 1,
+"wall_count": 0,
+"mail_count": 1,
+"user_reposted": 0
+},
+"is_favorite": false,
+"donut": {
+"is_donut": false
+},
+"short_text_rate": 0.8
+}, {
+"id": 4,
+"from_id": 106017,
+"owner_id": -205427305,
+"date": 1624542082,
+"marked_as_ads": 0,
+"post_type": "post",
+"text": "4",
+"can_delete": 1,
+"post_source": {
+"type": "vk"
+},
+"comments": {
+"count": 0,
+"can_post": 1,
+"can_view": 1,
+"groups_can_post": true
+},
+"likes": {
+"count": 0,
+"user_likes": 0,
+"can_like": 1,
+"can_publish": 0
+},
+"reposts": {
+"count": 0,
+"wall_count": 0,
+"mail_count": 0,
+"user_reposted": 0
+},
+"is_favorite": false,
+"donut": {
+"is_donut": false
+},
+"short_text_rate": 0.8
+}, {
+"id": 3,
+"from_id": 106017,
+"owner_id": -205427305,
+"date": 1624542079,
+"marked_as_ads": 0,
+"post_type": "post",
+"text": "3",
+"can_delete": 1,
+"post_source": {
+"type": "vk"
+},
+"comments": {
+"count": 2,
+"can_post": 1,
+"can_view": 1,
+"groups_can_post": true
+},
+"likes": {
+"count": 0,
+"user_likes": 0,
+"can_like": 1,
+"can_publish": 0
+},
+"reposts": {
+"count": 0,
+"wall_count": 0,
+"mail_count": 0,
+"user_reposted": 0
+},
+"is_favorite": false,
+"donut": {
+"is_donut": false
+},
+"short_text_rate": 0.8
+}, {
+"id": 2,
+"from_id": 106017,
+"owner_id": -205427305,
+"date": 1624542037,
+"marked_as_ads": 0,
+"post_type": "post",
+"text": "2",
+"can_delete": 1,
+"post_source": {
+"type": "vk"
+},
+"comments": {
+"count": 1,
+"can_post": 1,
+"can_view": 1,
+"groups_can_post": true
+},
+"likes": {
+"count": 1,
+"user_likes": 1,
+"can_like": 0,
+"can_publish": 0
+},
+"reposts": {
+"count": 0,
+"wall_count": 0,
+"mail_count": 0,
+"user_reposted": 0
+},
+"is_favorite": false,
+"donut": {
+"is_donut": false
+},
+"short_text_rate": 0.8
+}, {
+"id": 1,
+"from_id": 106017,
+"owner_id": -205427305,
+"date": 1624542032,
+"marked_as_ads": 0,
+"post_type": "post",
+"text": "1",
+"can_delete": 1,
+"post_source": {
+"type": "vk"
+},
+"comments": {
+"count": 0,
+"can_post": 1,
+"can_view": 1,
+"groups_can_post": true
+},
+"likes": {
+"count": 0,
+"user_likes": 0,
+"can_like": 1,
+"can_publish": 0
+},
+"reposts": {
+"count": 0,
+"wall_count": 0,
+"mail_count": 0,
+"user_reposted": 0
+},
+"is_favorite": false,
+"donut": {
+"is_donut": false
+},
+"short_text_rate": 0.8
+}],
+"profiles": [{
+"first_name": "Сергей",
+"id": 106017,
+"last_name": "Смолов",
+"can_access_closed": true,
+"is_closed": true,
+"sex": 2,
+"screen_name": "serereg",
+"photo_50": "https://sun9-47.u...9,615,615&ava=1",
+"photo_100": "https://sun9-47.u...9,615,615&ava=1",
+"online_info": {
+"visible": true,
+"last_seen": 1624800239,
+"is_online": true,
+"is_mobile": false
+},
+"online": 1
+}],
+"groups": [{
+"id": 205427305,
+"name": "test",
+"screen_name": "club205427305",
+"is_closed": 0,
+"type": "group",
+"is_admin": 1,
+"admin_level": 3,
+"is_member": 1,
+"is_advertiser": 1,
+"photo_50": "https://vk.com/images/community_50.png",
+"photo_100": "https://vk.com/images/community_100.png",
+"photo_200": "https://vk.com/images/community_200.png"
+}]
+}
+}
