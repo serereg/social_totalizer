@@ -32,6 +32,24 @@ class WallView(web.View):
         wall_id = query["wall_id"]
         login = query["login"]
         password = query["password"]
+        columns = [
+            "date",
+        ]
+        if "post_id" in query:
+            columns.append("id")
+        if "text" in query:
+            columns.append("text")
+        if "reposts" in query:
+            columns.append("rep_count")
+        if "likes" in query:
+            columns.append("likes")
+        if "comments" in query:
+            columns.append("com_count")
+        if "attach" in query:
+            columns.append("attach")
+        if "count_attach" in query:
+            columns.append("attachs_count")
+        logging.debug(f"{columns}")
         try:
             dt_stopping_search = datetime.strptime(query["date_time"], "%d-%m-%Y")
         except ValueError:
@@ -50,15 +68,6 @@ class WallView(web.View):
         # Todo: use web.StreamResponse for transferring
 
         io_to_transfer = io.StringIO()
-        columns = [
-            "date",
-            "id",
-            "likes",
-            "req_count",
-            "attachs_count",
-            "com_count",
-            "attach",
-        ]
         logging.debug("Forming a csv file")
         form_csv(io_to_transfer, columns, posts_info)
 

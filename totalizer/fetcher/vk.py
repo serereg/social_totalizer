@@ -94,7 +94,8 @@ class Wall:
                 "id": id_,
                 "text": text,
                 "likes": likes,
-                "req_count": reposts_count,
+                "rep_count": reposts_count,
+                "attach": "",
                 "attachs_count": attach_count,
                 "com_count": comments_count,
             }
