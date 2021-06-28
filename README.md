@@ -59,3 +59,4 @@ For running with docker:
 # Useful links
 * https://youtu.be/fP8oGx6ZA5o
 * https://youtu.be/0fSi7o-tRzo
+* https://pohmelie.github.io/presentation-base-docker/#slide1
