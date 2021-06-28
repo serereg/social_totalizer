@@ -78,7 +78,7 @@ class Wall:
                 reposts_count,
                 comments_count,
                 attach_count,
-                li_attachs,
+                raw_attachments,
             ) = (
                 post["date"],
                 post["id"],
@@ -99,27 +99,21 @@ class Wall:
                 "com_count": comments_count,
             }
 
-            # Todo: read types dinamically
-            types_of_attaches = {
-                "link": ["url"],
-                "audio": ["url"],
-                "photo": ["id", "owner_id"],
-                "video": ["id", "owner_id"],
-                "doc": ["id", "owner_id"],
-            }
-            attach_props = []
-            for attach in li_attachs:
-                converted_attach = {
-                    type_: {
-                        sub_prop: attach[type_][sub_prop]
-                        for sub_prop in types_of_attaches[type_]
+            converted_attachments = []
+            for raw_attachment in raw_attachments:
+                logging.warning(raw_attachment)
+                if (prop_type := raw_attachment["type"]) in ["audio", "link"]:
+                    prop = raw_attachment[prop_type]["url"]
+                else:
+                    logging.warning(prop_type)
+                    prop = {
+                        "id": raw_attachment[prop_type]["id"],
+                        "owner_id": raw_attachment[prop_type]["owner_id"],
                     }
-                    for type_ in types_of_attaches
-                    if type_ in attach
-                }
-                attach_props.append(converted_attach)
+                converted_attachment = {prop_type: prop}
+                converted_attachments.append(converted_attachment)
 
-            row.update({"attach": attach_props})
+            row.update({"attach": converted_attachments})
             rows.append(row)
         return rows
 
