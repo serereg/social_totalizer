@@ -29,13 +29,13 @@ class WallView(web.View):
         logging.debug("wallview get")
         logging.debug(self.request.rel_url.query)
 
-        wall_id = self.request.rel_url.query["wall_id"]
-        login = self.request.rel_url.query["login"]
-        password = self.request.rel_url.query["password"]
+        query = self.request.rel_url.query
+
+        wall_id = query["wall_id"]
+        login = query["login"]
+        password = query["password"]
         try:
-            dt_stopping_search = datetime.strptime(
-                self.request.rel_url.query["date_time"], "%d-%m-%Y"
-            )
+            dt_stopping_search = datetime.strptime(query["date_time"], "%d-%m-%Y")
         except ValueError:
             dt_stopping_search = datetime.now()
 
