@@ -26,10 +26,8 @@ class WallView(web.View):
             stopping extracting posts from the wall) form csv file.
             Now there is a nowing issue with working just with one file
             tmp.csv."""
-        logging.debug("wallview get")
-        logging.debug(self.request.rel_url.query)
-
         query = self.request.rel_url.query
+        logging.debug(f"wallview get \n{query}")
 
         wall_id = query["wall_id"]
         login = query["login"]
