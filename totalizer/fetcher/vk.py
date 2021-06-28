@@ -102,7 +102,7 @@ class Wall:
             converted_attachments = []
             for raw_attachment in raw_attachments:
                 logging.warning(raw_attachment)
-                if (prop_type := raw_attachment["type"]) in ["audio", "link"]:
+                if (prop_type := raw_attachment["type"]) in ("audio", "link"):
                     prop = raw_attachment[prop_type]["url"]
                 else:
                     logging.warning(prop_type)
