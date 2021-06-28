@@ -31,7 +31,7 @@ post id
 ```
 
 ## Instructions
-For manual deploying on Linux (Ubuntu) machine and run locally:
+For manual deploying on Linux (Ubuntu) machine and running locally:
 1. Install python3.9 ```apt-get install python3.9```
 1. Install virtualenv ```pip3 install virtualenv```
 1. Create virtual environment ```virtualenv venv```
@@ -40,9 +40,22 @@ For manual deploying on Linux (Ubuntu) machine and run locally:
 1. Run webserver ```python3.9 -m totalizer```
 1. Check working via browser ```http://localhost/```
 
+For running with docker:
+1. `ssh root@xxx.xxx.xxx.xxx`
+1. `apt install git`
+1. `git clone https://github.com/serereg/social_totalizer.git`
+1. `cd social_totalizer`
+1. `apt install docker.io`
+1. `./run_docker.sh`
+* useful command: `docker stop $(sudo docker ps -a -q)`
+
 ## Future improvements
 1. Replace aiohttp to JupyterHub server with preconfigured scripts for getching data.
 1. Add pyproject.toml file for installing project dependencies.
 1. Use async library for fetching from VK (but, aiovk doesn't work properly).
    vk_api may be used just for generating list of tokens.
 1. Use secure GET for sending user login and password.
+
+# Useful links
+* https://youtu.be/fP8oGx6ZA5o
+* https://youtu.be/0fSi7o-tRzo
