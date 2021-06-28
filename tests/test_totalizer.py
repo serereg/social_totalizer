@@ -1,3 +1,4 @@
+import io
 import json
 import logging
 
@@ -49,7 +50,7 @@ def test_time_filter():
     assert func(posts_2) is False
 
 
-def test_form_csv(tmp_path: Path):
+def test_form_csv():
     posts = [
         {
             "date": "",
@@ -72,12 +73,11 @@ def test_form_csv(tmp_path: Path):
             "attach": {"photo": {"id": 456239316, "owner_id": 106017}},
         },
     ]
-    form_csv(path := tmp_path / "tmp.csv", ["date", "id", "attachs_count"], posts)
-    posts_from_csv = path.read_text()
-    assert (
-        posts_from_csv
-        == '''date,id,attachs_count
-"""""",10,2
-"""""",9,1
-'''
-    )
+    io_ram_file = io.StringIO()
+    form_csv(io_ram_file, ["date", "id", "attachs_count"], posts)
+    posts_from_csv = io_ram_file.getvalue()
+
+    print(posts_from_csv.strip())
+    text_etalon = '''date,id,attachs_count\r\n"""""",10,2\r\n"""""",9,1\r\n'''
+    print(text_etalon)
+    assert posts_from_csv == text_etalon

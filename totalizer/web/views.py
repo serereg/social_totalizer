@@ -1,12 +1,11 @@
+import io
 import logging
 from datetime import datetime
-from pathlib import Path
 
 from aiohttp import web
 
 from ..fetcher.vk import Wall, time_filter
 from .utils import form_csv
-
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -52,9 +51,7 @@ class WallView(web.View):
         posts_info = wall.get_posts_info()
         # Todo: use web.StreamResponse for transferring
 
-        # Todo: Generate temporary file
-        temp_file_to_transfer = Path(__file__).parent / "data/tmp.csv"
-
+        io_to_transfer = io.StringIO()
         columns = [
             "date",
             "id",
@@ -65,11 +62,10 @@ class WallView(web.View):
             "attach",
         ]
         logging.debug("Forming a csv file")
-        form_csv(temp_file_to_transfer, columns, posts_info)
+        form_csv(io_to_transfer, columns, posts_info)
 
-        # Todo: need to delete the unused file
         logging.debug("Sending the csv file")
-        return web.FileResponse(temp_file_to_transfer)
+        return web.Response(content_type="text/csv", text=io_to_transfer.getvalue())
 
 
 class AnalysisView(web.View):
