@@ -63,26 +63,24 @@ class WallView(web.View):
         logging.debug("Attempt to authorize in VK and fetch posts")
         loop = asyncio.get_running_loop()
 
-        def f():
-            wall.update(login, password, stop_filter=time_filter(dt_stopping_search))
-
         with ThreadPoolExecutor() as pool:
-            await loop.run_in_executor(pool, f)
-
-        logging.debug("Posts fetched")
+            await loop.run_in_executor(
+                pool, wall.update, login, password, time_filter(dt_stopping_search)
+            )
 
         logging.debug("Extraction information from posts")
         posts_info = wall.get_posts_info()
+        logging.warning(posts_info)
         # Todo: use web.StreamResponse for transferring
 
-        io_to_transfer = io.StringIO()
-        logging.debug("Forming a csv file")
-        form_csv(io_to_transfer, columns, posts_info)
+        with io.StringIO() as io_to_transfer:
+            logging.debug("Forming a csv file")
+            form_csv(io_to_transfer, columns, posts_info)
 
-        logging.debug("Sending the csv file")
-        return web.Response(
-            content_type="text/csv", text=io_to_transfer.getvalue(), charset="utf-8"
-        )
+            logging.debug("Sending the csv file")
+            return web.Response(
+                content_type="text/csv", text=io_to_transfer.getvalue(), charset="utf-8"
+            )
 
 
 class AnalysisView(web.View):

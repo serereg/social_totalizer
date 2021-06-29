@@ -78,6 +78,6 @@ def test_form_csv():
     posts_from_csv = io_ram_file.getvalue()
 
     print(posts_from_csv.strip())
-    text_etalon = '''date,id,attachs_count\r\n"""""",10,2\r\n"""""",9,1\r\n'''
+    text_etalon = """date,id,attachs_count\r\n,10,2\r\n,9,1\r\n"""
     print(text_etalon)
     assert posts_from_csv == text_etalon

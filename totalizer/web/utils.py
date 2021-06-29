@@ -1,5 +1,6 @@
 import csv
-import json
+
+# import json
 from typing import List, Dict
 
 
@@ -17,4 +18,6 @@ def form_csv(file, columns: List[str], rows: List[Dict]):
     writer = csv.DictWriter(file, fieldnames=columns)
     writer.writeheader()
     for row in rows:
-        writer.writerow({k: json.dumps(v) for k, v in row.items() if k in columns})
+        writer.writerow({k: v for k, v in row.items() if k in columns})
+        # writer.writerow({k: json.dumps(v).encode(
+        # 'unicode_escape') for k, v in row.items() if k in columns})
