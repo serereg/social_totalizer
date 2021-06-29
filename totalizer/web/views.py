@@ -39,15 +39,15 @@ class WallView(web.View):
             columns.append("id")
         if "text" in query:
             columns.append("text")
-        if "reposts" in query:
+        if "num_reposts" in query:
             columns.append("rep_count")
-        if "likes" in query:
+        if "num_likes" in query:
             columns.append("likes")
-        if "comments" in query:
+        if "num_comments" in query:
             columns.append("com_count")
         if "attach" in query:
             columns.append("attach")
-        if "count_attach" in query:
+        if "num_attachs" in query:
             columns.append("attachs_count")
         logging.debug(f"{columns}")
         try:
