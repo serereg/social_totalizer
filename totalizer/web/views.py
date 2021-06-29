@@ -32,35 +32,35 @@ class WallView(web.View):
         wall_id = query["wall_id"]
         login = query["login"]
         password = query["password"]
-        columns = [
-            "date",
-        ]
-        if "post_id" in query:
-            columns.append("id")
-        if "text" in query:
-            columns.append("text")
-        if "num_reposts" in query:
-            columns.append("rep_count")
-        if "num_likes" in query:
-            columns.append("likes")
-        if "num_comments" in query:
-            columns.append("com_count")
-        if "attach" in query:
-            columns.append("attach")
-        if "num_attachs" in query:
-            columns.append("attachs_count")
-        logging.debug(f"{columns}")
         try:
             dt_stopping_search = datetime.strptime(query["date_time"], "%d-%m-%Y")
         except ValueError:
             dt_stopping_search = datetime.now()
+
+        column_query = {
+            "post_id": "id",
+            "text": "text",
+            "num_reposts": "rep_count",
+            "num_likes": "likes",
+            "num_comments": "com_count",
+            "attach": "attach",
+            "num_attachs": "attachs_count",
+        }
+        columns = [column_query[k] for k in query if k in column_query]
+        if not columns:
+            return web.Response(text="Wrong options for fetching")
+
+        columns.insert(0, "date")
+
+        logging.debug(f"{columns}")
 
         # vk = self.request.app["vk"]
         wall = Wall(owner_id=int(wall_id))
         # vk.add_wall(wall)
 
         logging.debug("Attempt to authorize in VK and fetch posts")
-        wall.update(login, password, stop_filter=time_filter(dt_stopping_search))
+        if columns:
+            wall.update(login, password, stop_filter=time_filter(dt_stopping_search))
         logging.debug("Posts fetched")
 
         logging.debug("Extraction information from posts")
