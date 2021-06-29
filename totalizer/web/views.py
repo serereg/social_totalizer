@@ -1,8 +1,10 @@
+import asyncio
 import io
 import logging
-from datetime import datetime
 
 from aiohttp import web
+from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor
 
 from ..fetcher.vk import Wall, time_filter
 from .utils import form_csv
@@ -59,7 +61,14 @@ class WallView(web.View):
         # vk.add_wall(wall)
 
         logging.debug("Attempt to authorize in VK and fetch posts")
-        wall.update(login, password, stop_filter=time_filter(dt_stopping_search))
+        loop = asyncio.get_running_loop()
+
+        def f():
+            wall.update(login, password, stop_filter=time_filter(dt_stopping_search))
+
+        with ThreadPoolExecutor() as pool:
+            await loop.run_in_executor(pool, f)
+
         logging.debug("Posts fetched")
 
         logging.debug("Extraction information from posts")
@@ -71,7 +80,9 @@ class WallView(web.View):
         form_csv(io_to_transfer, columns, posts_info)
 
         logging.debug("Sending the csv file")
-        return web.Response(content_type="text/csv", text=io_to_transfer.getvalue())
+        return web.Response(
+            content_type="text/csv", text=io_to_transfer.getvalue(), charset="utf-8"
+        )
 
 
 class AnalysisView(web.View):
