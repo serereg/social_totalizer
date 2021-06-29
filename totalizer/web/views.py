@@ -59,8 +59,7 @@ class WallView(web.View):
         # vk.add_wall(wall)
 
         logging.debug("Attempt to authorize in VK and fetch posts")
-        if columns:
-            wall.update(login, password, stop_filter=time_filter(dt_stopping_search))
+        wall.update(login, password, stop_filter=time_filter(dt_stopping_search))
         logging.debug("Posts fetched")
 
         logging.debug("Extraction information from posts")
